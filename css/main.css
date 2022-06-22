@@ -1,0 +1,18 @@
+body{
+    background-color: burlywood;
+}
+
+#mapdiv {
+    width: 10%;
+    margin:auto;
+}
+
+#mapdiv path{
+    fill: brown;
+    stroke: yellow;
+    stroke-width: 2px;
+    transition:fill 0.3s;
+}
+#mapdiv :hover{
+    fill:rgb(41, 119, 5);
+}
