@@ -42,6 +42,7 @@ CREATE TABLE response(
     citizen_name varchar(150) not null,
     citizen_phone varchar(150) not null,
     citizen_address text not null,
+    description text,
     p_idd int(15) not null,
     d_idd int(15) not null,
     t_idd int(15) not null,

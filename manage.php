@@ -16,7 +16,7 @@
                   echo "Town";
               }
           }else{
-              echo "<script>window.location.href='dashboard.php'</script>";
+              echo "<script>window.location.href='index.php'</script>";
           }
         ?></h1>
       </div>
@@ -159,7 +159,6 @@
                         <?php } ?>
                          </select>
                         <br>
-
                         <a href="#" id="saveTown" class="btn btn-primary">Save Town</a>
                     </form>
                 </div>
@@ -185,8 +184,7 @@
            <?php
         }
       ?>
-     
-
+  
     </main>
   </div>
 </div>

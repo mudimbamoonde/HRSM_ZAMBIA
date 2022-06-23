@@ -1,5 +1,15 @@
+
 <?php include "include/header.php" ?>
 
+<?php 
+
+ /*$_SESSION["USER_ID"] = $usrdata->user_id;
+ $_SESSION["USERNAME"] = $usrdata->username;
+ $_SESSION["FIRSTNAME"] = $usrdata->fname;
+ $_SESSION["LASTNAME"] = $usrdata->lname;
+ $_SESSION["PHONENUMBER"] = $usrdata->pnumber;
+ $_SESSION["EMAIL"] = $usrdata->email;*/
+?>
 <div class="container-fluid">
   <div class="row">
    <?php include "include/sidebar.php" ?>

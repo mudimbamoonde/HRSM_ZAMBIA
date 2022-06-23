@@ -1,4 +1,11 @@
+<?php
+ob_start();
+session_start();
+if(!isset($_SESSION["id"])){
+   header("location:logout.php");
+}
 
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -43,8 +50,8 @@
       </button>
     
       <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Sign out</a>
+        <li class="nav-item">
+             <a class="nav-link" href="logout.php"><?php echo $_SESSION["firstname"]." ".$_SESSION["lastname"] ?></a>
         </li>
       </ul>
     </header>
