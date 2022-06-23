@@ -2,7 +2,7 @@
 $host = 'localhost';
 $db_name = 'hsrm_zambia';
 $username = 'root';
-$password = '';
+$password = 'S@muel9judah';
 $data = array();
 try{
     $conn = new PDO('mysql:host='.$host.';dbname='.$db_name, $username,$password);

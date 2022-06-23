@@ -103,4 +103,27 @@ if (isset($_POST["districtData"])) {
         
     //     }
 
+
+if(isset($_POST["createAccount"])){
+    //  var param = "createAccount="+1+"&"+"fname="+fname+
+    //  "&"+"lname="+lname+ "&"+"username="+username+ "&"+"pnumber="+pnumber;
+    $sql = "INSERT INTO users(user_id,fname,lname,pnumber,username,email,role,password) VALUES(?,?,?,?,?,?,?,?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(1,null);
+    $stmt->bindValue(2,$_POST["fname"]);
+    $stmt->bindValue(3,$_POST["lname"]);
+    $stmt->bindValue(4,$_POST["pnumber"]);
+    $stmt->bindValue(5,$_POST["username"]);
+    $stmt->bindValue(6,$_POST["email"]);
+    $stmt->bindValue(7,"cuser");
+    $stmt->bindValue(8,md5($_POST["password"]));
+    if($stmt->execute()){
+    $output .= "<div class='alert alert-success'>
+        <a href='#' class='close' data-dismiss='alert' aria-label='close'><span
+                class='mdi mdi-close'></span></a><b>Successfully Registered!!</b>
+    </div>";
+    }
+
+}
+
 echo $output;

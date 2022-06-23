@@ -27,6 +27,46 @@ console.log("Loading...");
      xr.send(param);
     //  console.log(param);
 });
+
+
+
+//saveAccount
+ $("#sendData").click( function(){
+     // alert("Hello");
+     var fname = document.getElementById("fname").value;
+     var lname = document.getElementById("lname").value;
+     var pnumber = document.getElementById("pnumber").value;
+     var username = document.getElementById("username").value;
+     var email = document.getElementById("email").value;
+     var password = document.getElementById("password").value;
+     var cpassword = document.getElementById("cpassword").value;
+    
+     var param = "createAccount="+1+"&"+"fname="+fname+
+     "&"+"lname="+lname+ "&"+"username="+username+"&"+"email="+email+ "&"+"pnumber="+pnumber+ "&"+"password="+password;
+    //  console.log(param);
+ 
+    if(password==cpassword){
+        var xr = new XMLHttpRequest();
+        xr.open("POST","action.php",true);
+        xr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        xr.onreadystatechange = function() {
+         //Call a function when the state changes.
+         if(xr.readyState == 4 && xr.status == 200) {
+             // alert(xhr.responseText);
+             document.getElementById("msg").innerHTML = xr.responseText;
+            
+         }
+     }
+     xr.send(param);
+     console.log(param);
+    }else{
+         document.getElementById("msg").innerHTML = "<div class='alert alert-danger'>  Your Password doesn't match!!</div>";
+    }
+     
+     
+});
+
+
 // viewDistrict
 viewDistrict();
 function viewDistrict(){

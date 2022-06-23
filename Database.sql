@@ -51,3 +51,14 @@ CREATE TABLE response(
     foreign key (d_idd) references district(d_id),
     foreign key (t_idd) references town(t_id)
 );
+
+CREATE TABLE users(
+    user_id int(15) not null primary key auto_increment,
+    fname varchar(100),
+    lname varchar(100),
+    email varchar(100),
+    pnumber varchar(100),
+    username varchar(100),
+    role enum("admin","cuser"),
+    password text
+);
