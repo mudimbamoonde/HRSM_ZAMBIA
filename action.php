@@ -1,4 +1,5 @@
 <?php
+ob_clean();
 include "include/config.php";
 
 $output = "";
@@ -18,6 +19,39 @@ if($stmt->execute()){
 
 
 }
+if (isset($_POST["userresponse"])) {
+ //var param = "userresponse="+1+"&"+"district="+district+"&"+"description="+description;
+/**
+   response_id int(15) not null primary key auto_increment,
+   citizen_name varchar(150) not null,
+   citizen_phone varchar(150) not null,
+   citizen_address text not null,
+   description text,
+   d_idd int(15) not null,
+  date_time datetime,
+
+
+   p_idd
+   d_idd
+   t_idd
+
+*/
+session_start();
+$sql = "INSERT INTO response(citizen_name,citizen_phone,citizen_address,description,d_idd) VALUES(?,?,?,?,?)";
+$stmt = $conn->prepare($sql);
+$stmt->bindValue(1,$_SESSION["firstname"]." ".$_SESSION["lastname"]);
+$stmt->bindValue(2,$_SESSION["phonenumber"]);
+$stmt->bindValue(3,"");
+$stmt->bindValue(4,$_POST["description"]);
+$stmt->bindValue(5,$_POST["district"]);
+if($stmt->execute()){
+    $output .= "<div class='alert alert-success'><a href='#' class='close' data-dismiss ='alert' aria-label ='close'><span class='mdi mdi-close'></span></a><b>Successfully Registered!!</b></div>";
+}else{
+    $output .="<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'><span class='mdi mdi-close'></span></a><b>Failed to Save: </b></div>";
+}
+
+
+}
 
 if(isset($_GET["viewData"])){
     $view = "SELECT*FROM province DSC";
@@ -28,6 +62,21 @@ if(isset($_GET["viewData"])){
         <td>$row->p_id</td>
         <td>$row->p_name</td>
         <td><a href=''>Delete</a></td>
+      </tr>";
+    }
+    // echo "Values";
+    
+}
+
+if(isset($_GET["viewResponse"])){
+    $view = "SELECT*FROM response AS r LEFT JOIN district AS d ON r.d_idd = d.d_id order by response_id ";
+    $stm = $conn->prepare($view);
+    $stm->execute();
+    while($row = $stm->fetch(PDO::FETCH_OBJ)){
+        $output .= "<tr>
+        <td>$row->d_name</td>
+        <td>$row->citizen_name</td>
+        <td>$row->description</td>
       </tr>";
     }
     // echo "Values";

@@ -29,6 +29,30 @@ console.log("Loading...");
 });
 
 
+//sendresponse
+ $("#sendresponse").click( function(){
+    //  alert("Hello");
+     var description = document.getElementById("description").value;
+     var district = document.getElementById("district").value;
+     var param = "userresponse="+1+"&"+"district="+district+"&"+"description="+description;
+    //  console.log(param);
+ 
+     var xr = new XMLHttpRequest();
+     xr.open("POST","action.php",true);
+     xr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+     xr.onreadystatechange = function() {
+         //Call a function when the state changes.
+         if(xr.readyState == 4 && xr.status == 200) {
+             // alert(xhr.responseText);
+             document.getElementById("msg").innerHTML = xr.responseText;
+             
+         }
+     }
+     xr.send(param);
+     console.log(param);
+});
+
+
 
 //saveAccount
  $("#sendData").click( function(){
@@ -54,7 +78,7 @@ console.log("Loading...");
          if(xr.readyState == 4 && xr.status == 200) {
              // alert(xhr.responseText);
              document.getElementById("msg").innerHTML = xr.responseText;
-            
+            viewResponse();
          }
      }
      xr.send(param);
@@ -78,6 +102,24 @@ function viewDistrict(){
         //Call a function when the state changes.
         if(hr.readyState == 4 && hr.status == 200) {
             document.getElementById("districtData").innerHTML= hr.responseText;
+            // console.log(xhr.responseText);
+        }
+    }
+    // xhr.send(param)
+    hr.send();
+}
+
+// responseDATA
+viewResponse();
+function viewResponse(){
+    var hr = new XMLHttpRequest();
+    hr.open("GET","action.php?viewResponse=1",true);
+    // var param = "viewData="+1;
+    // xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    hr.onreadystatechange = function() {
+        //Call a function when the state changes.
+        if(hr.readyState == 4 && hr.status == 200) {
+            document.getElementById("responseData").innerHTML= hr.responseText;
             // console.log(xhr.responseText);
         }
     }

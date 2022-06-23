@@ -43,14 +43,10 @@ CREATE TABLE response(
     citizen_phone varchar(150) not null,
     citizen_address text not null,
     description text,
-    p_idd int(15) not null,
     d_idd int(15) not null,
-    t_idd int(15) not null,
     date_time datetime,
 
-    foreign key (p_idd) references province(p_id),
-    foreign key (d_idd) references district(d_id),
-    foreign key (t_idd) references town(t_id)
+    foreign key (d_idd) references district(d_id)
 );
 
 CREATE TABLE users(
@@ -63,3 +59,7 @@ CREATE TABLE users(
     role enum("admin","cuser"),
     password text
 );
+
+
+-- Addiministrator
+INSERT INTO users(`user_id`,`fname`,`lname`,`email`,`pnumber`,`username`,`role`,`password`) VALUES (null,'admin','Nyangu','nyangu@icu.com','0183081031','admin','admin',md5('123456'));

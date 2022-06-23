@@ -97,9 +97,16 @@
                             $_SESSION["firstname"] = $usrdata->fname;
                             $_SESSION["lastname"] = $usrdata->lname;
                             $_SESSION["phonenumber"] = $usrdata->pnumber;
+                            $_SESSION["role"] = $usrdata->role;
                             $_SESSION["email"] = $usrdata->email;
+
+                            if($usrdata->role == "cuser"){
+                                header("location:usercovidresponse.php");
+                            }else{
+                                header("location:index.php");
+                            }
                           
-                            header("location:index.php");
+                        
 
                         }else{
                             echo "<div class='alert alert-danger'> Your Password doesn't match!!</div>";

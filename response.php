@@ -12,12 +12,13 @@
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th>SN</th>
-              <th>Province Name</th>
-              <th>Action</th>
+              <th>District</th>
+              <th>Citizen Name</th>
+              <th>Description</th>
+          
             </tr>
           </thead>
-          <tbody id="provinceData">
+          <tbody id="responseData">
           </tbody>
         </table>
       </div>
